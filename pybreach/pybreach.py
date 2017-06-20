@@ -97,8 +97,8 @@ def right_reach(perf_meas, i, pct_beh):
         overzichtr[overzichtr[:, 2] > pct_beh / 100. * aantr, 1] = 0
         overzichtr[overzichtr[:, 1] == 1, 3] = aantr
 
-    maxreachr = i - (np.nanmax(overzichtr[:, 3],
-                               axis=0)).astype(int) + 1
+    maxreachr = i + (np.nanmax(overzichtr[:, 3],
+                               axis=0)).astype(int) - 1
 
     # correct the reach length o end-of-line zeros
     if np.isnan(maxreachr):
@@ -110,7 +110,7 @@ def right_reach(perf_meas, i, pct_beh):
                        maxreachr, 2:4] = \
                 overzichtr[i + overzichtr[:, 3].astype(int) - 1 ==
                            maxreachr, 2:4] - 1
-            maxreachr += 1
+            maxreachr -= 1
 
     overzichtr[~np.isnan(overzichtr[:, 3]), 4] = i + \
                                 overzichtr[~np.isnan(overzichtr[:, 3]), 3] - 1
@@ -158,9 +158,18 @@ perf_matrix = np.genfromtxt("/home/stijn_vanhoey/projecten/2015_breach_katrien"
                             "/2017_development/testdata/testdata_subset/"
                             "21_101_acc.csv",
                             delimiter=",", dtype=int)
-rel_levels = np.array([40]) # 0 5 10 20
+rel_levels = np.array([0, 5, 10, 20, 40]) #
 
-overzichtl, maxreachl = breach_run(perf_matrix, rel_levels) # vwe
-
+# individual left right
+overzichtl, maxreachl = left_reach(perf_matrix, 100, 40)
 print(overzichtl)
 print("Maxreach: ", maxreachl)
+
+# individual reach right
+overzichtr, maxreachr = right_reach(perf_matrix, 100, 40)
+print(overzichtr)
+print("Maxreach: ", maxreachr)
+
+# reach itself
+breach = breach_run(perf_matrix, rel_levels) # vwe
+print(breach)
