@@ -133,7 +133,6 @@ def breach_run(perf_meas, pcten): #, vwe
 
     """
 
-
     breach = np.empty((perf_meas.shape[1], 2 * pcten.size), dtype=int)
     par_size, data_size = perf_meas.shape
     # par_maxreach
@@ -150,26 +149,3 @@ def breach_run(perf_meas, pcten): #, vwe
             breach[i, 2 * j + 1] = maxreachr
 
     return breach  # par_maxreach
-
-# -------------------------------
-# Running the testdata
-# -------------------------------
-perf_matrix = np.genfromtxt("/home/stijn_vanhoey/projecten/2015_breach_katrien"
-                            "/2017_development/testdata/testdata_subset/"
-                            "21_101_acc.csv",
-                            delimiter=",", dtype=int)
-rel_levels = np.array([0, 5, 10, 20, 40]) #
-
-# individual left right
-overzichtl, maxreachl = left_reach(perf_matrix, 100, 40)
-print(overzichtl)
-print("Maxreach: ", maxreachl)
-
-# individual reach right
-overzichtr, maxreachr = right_reach(perf_matrix, 100, 40)
-print(overzichtr)
-print("Maxreach: ", maxreachr)
-
-# reach itself
-breach = breach_run(perf_matrix, rel_levels) # vwe
-print(breach)
