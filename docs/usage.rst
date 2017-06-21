@@ -4,4 +4,4 @@ Usage
 
 To use Bidirectional Reach (BReach) in a project::
 
-    import pybreach
+    from pybreach.pybreach import breach_run
