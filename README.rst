@@ -17,9 +17,7 @@ Bidirectional Reach (BReach)
      :target: https://pyup.io/repos/github/stijnvanhoey/pybreach/
      :alt: Updates
 
-
-Identification of temporal consistency in rating curve data: Bidirectional Reach (BReach)
-
+This Python Package provides an implementation of the methodology presented in [Identification of temporal consistency in rating curve data: Bidirectional Reach (BReach)](http://onlinelibrary.wiley.com/doi/10.1002/2016WR018692/abstract). BReach identifies the consistency of rating curve data based on a quality analysis of model results. Results of this analysis enable the detection of changes in data consistency.
 
 * Free software: MIT license
 * Documentation: https://pybreach.readthedocs.io.
@@ -27,8 +25,7 @@ Identification of temporal consistency in rating curve data: Bidirectional Reach
 
 Features
 --------
-
-* TODO
+The current scope of the package is to ensure that based on a 2-D matrix of performance measures (calculated for each data point and a given number of parameter sets), the package calculates both reaches and provides the visualisation(s) to interpret the data.
 
 Credits
 ---------
