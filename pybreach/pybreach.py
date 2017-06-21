@@ -39,13 +39,11 @@ def left_reach(perf_meas, i, pct_beh):
         overzichtl[overzichtl[:, 2] > pct_beh / 100. * aantl, 1] = 0
         overzichtl[overzichtl[:, 1] == 1, 3] = aantl
 
-    maxreachl = i - (np.nanmax(overzichtl[:, 3],
-                               axis=0)).astype(int) + 1
-
     # correct the reach length on end-of-line zeros
-    if np.isnan(maxreachl):
+    if all(np.isnan(overzichtl[:, 3])):
         maxreachl = i
     else:
+        maxreachl = i - (np.nanmax(overzichtl[:, 3], axis=0)).astype(int) + 1
         while np.all(np.abs(perf_meas[i - overzichtl[:, 3].astype(
                 int) + 1 == maxreachl, maxreachl]) == 0):  # vwe
             overzichtl[i - overzichtl[:, 3].astype(int) + 1 ==
@@ -97,13 +95,11 @@ def right_reach(perf_meas, i, pct_beh):
         overzichtr[overzichtr[:, 2] > pct_beh / 100. * aantr, 1] = 0
         overzichtr[overzichtr[:, 1] == 1, 3] = aantr
 
-    maxreachr = i + (np.nanmax(overzichtr[:, 3],
-                               axis=0)).astype(int) - 1
-
     # correct the reach length o end-of-line zeros
-    if np.isnan(maxreachr):
+    if all(np.isnan(overzichtr[:, 3])):
         maxreachr = i
     else:
+        maxreachr = i + (np.nanmax(overzichtr[:, 3], axis=0)).astype(int) - 1
         while np.all(np.abs(perf_meas[i + overzichtr[:, 3].astype(
                 int) - 1 == maxreachr, maxreachr]) == 0):  # vwe
             overzichtr[i + overzichtr[:, 3].astype(int) - 1 ==
