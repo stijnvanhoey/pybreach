@@ -143,18 +143,23 @@ def right_reach(perf_meas, i, pct_beh):
 
 
 def breach_run(perf_meas, pcten): #, vwe
-    """
+    """derive breach for a given performance matrix
 
     Parameters
     ----------
-    perf_meas
+    perf_meas : 2-D numpy ndarray
+        Input array of shape NxM with N the number of model realisations and M
+        the number of model evaluation points (time steps, measured values)
     pcten: list
-        Percentages to calculate to use as tolerance level
+        list of tolerance levels, defining the percentage of points
+        that are allowed to fail
     vwe: Not yet implemented!
 
     Returns
     -------
-
+    breach : numpy ndarray
+        For each of the tolerance levels, the left and right reach for each
+        of the data points
     """
 
     breach = np.empty((perf_meas.shape[1], 2 * pcten.size), dtype=int)
