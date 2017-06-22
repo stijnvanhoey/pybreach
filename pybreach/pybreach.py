@@ -5,17 +5,31 @@ import numpy as np
 
 
 def left_reach(perf_meas, i, pct_beh):
-    """
+    """calculate the left reach
+    For all model realisations, given a data evaluation point index, get the
+    left reach for all realisations and derive the maximum
 
     Parameters
     ----------
-    perf_meas
-    i
-    pct_beh
+    perf_meas : 2-D numpy ndarray
+        Input array of shape NxM with N the number of model realisations and M
+        the number of model evaluation points (time steps, measured values)
+    i : int
+        the index of the array defining the current model evaluation point to
+        calculate the left reach
+    pct_beh : float [0-1]
+        tolerance level, defining the percentage of points that do not comply
+        in order to continue the reach calculation
 
     Returns
     -------
-
+    overzichtl : numpy ndarray
+        Nx5 output array with on the individual columns (1) the index,
+        (2) a zero column used for internal calculation, (3) the number of
+        failures, (4) the reach and (5) the span for each of the model
+        realisations
+    maxreachl : int
+        maximum left reach of all model realisations
     """
     par_size, data_size = perf_meas.shape
     # prepare the left reach overview array
@@ -60,17 +74,31 @@ def left_reach(perf_meas, i, pct_beh):
 
 
 def right_reach(perf_meas, i, pct_beh):
-    """
+    """calculate the right reach
+    For all model realisations, given a data evaluation point index, get the
+    right reach for all realisations and derive the maximum
 
     Parameters
     ----------
-    perf_meas
-    i
-    pct_beh
+    perf_meas : 2-D numpy ndarray
+        Input array of shape NxM with N the number of model realisations and M
+        the number of model evaluation points (time steps, measured values)
+    i : int
+        the index of the array defining the current model evaluation point to
+        calculate the left reach
+    pct_beh : float [0-1]
+        tolerance level, defining the percentage of points that do not comply
+        in order to continue the reach calculation
 
     Returns
     -------
-
+    overzichtr : numpy ndarray
+        Nx5 output array with on the individual columns (1) the index,
+        (2) a zero column used for internal calculation, (3) the number of
+        failures, (4) the reach and (5) the span for each of the model
+        realisations
+    maxreachr : int
+        maximum right reach of all model realisations
     """
     par_size, data_size = perf_meas.shape
     # prepare the right reach overview array
@@ -115,18 +143,23 @@ def right_reach(perf_meas, i, pct_beh):
 
 
 def breach_run(perf_meas, pcten): #, vwe
-    """
+    """derive breach for a given performance matrix
 
     Parameters
     ----------
-    perf_meas
+    perf_meas : 2-D numpy ndarray
+        Input array of shape NxM with N the number of model realisations and M
+        the number of model evaluation points (time steps, measured values)
     pcten: list
-        Percentages to calculate to use as tolerance level
+        list of tolerance levels, defining the percentage of points
+        that are allowed to fail
     vwe: Not yet implemented!
 
     Returns
     -------
-
+    breach : numpy ndarray
+        For each of the tolerance levels, the left and right reach for each
+        of the data points
     """
 
     breach = np.empty((perf_meas.shape[1], 2 * pcten.size), dtype=int)
