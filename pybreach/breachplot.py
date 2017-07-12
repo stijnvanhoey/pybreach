@@ -6,9 +6,10 @@ Created on Tue May 16 16:00:42 2017
 @author: kveerden
 """
 
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
 import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.gridspec import GridSpec
+
 
 ##############################!!!!!!!!!!!!!!!!!!!!!!!
 ## vervang dit op termijn door functie met o.a. BReach en hQ data als input (later uit te breiden met moments of floods, official RC changes en afgebakende consistente periodes)
@@ -36,7 +37,7 @@ labels_subpl2 = 0.1
 height_fig = 1 + space_betw + height_subpl2 + labels_subpl2  # overall height of figure as fraction of subplot 1
 fig = plt.figure(figsize=(6, (
 1 + space_betw + height_subpl2) * 6))  # height figure = height subplot1 + space between subpl 1 and 2 + height subplot 2
-G = gridspec.GridSpec(np.int(breach.shape[0] * height_fig * 1000),
+G = GridSpec(np.int(breach.shape[0] * height_fig * 1000),
                       1)  # heb aantal grids in height zeer groot gemaakt om voor alle plots (ook met weinig datapunten) dezelfde verhouding van subplots en afstand tussenin te krijgen.
 
 # BReach plot (subplot 1)
