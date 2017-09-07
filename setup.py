@@ -19,7 +19,7 @@ test_requirements = [
 
 setup(
     name='pybreach',
-    version='0.2.0',
+    version='0.3.0',
     description="Identification of temporal consistency in rating curve data: Bidirectional Reach (BReach)",
     long_description=readme + '\n\n' + history,
     author="Stijn Van Hoey",
