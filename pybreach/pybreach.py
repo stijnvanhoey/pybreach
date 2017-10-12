@@ -6,7 +6,7 @@ import numpy as np
 
 def left_reach(perf_meas, i, pct_beh):
     """calculate the left reach
-    For all model realisations, given a data evaluation point index, get the
+    For all model realisations, given a data evaluation point index and a degree of tolerance, get the
     left reach for all realisations and derive the maximum
 
     Parameters
@@ -18,7 +18,7 @@ def left_reach(perf_meas, i, pct_beh):
         the index of the array defining the current model evaluation point to
         calculate the left reach
     pct_beh : float [0-1]
-        tolerance level, defining the percentage of points that do not comply
+        degree of tolerance, defining the percentage of points that do not comply
         in order to continue the reach calculation
 
     Returns
@@ -75,7 +75,7 @@ def left_reach(perf_meas, i, pct_beh):
 
 def right_reach(perf_meas, i, pct_beh):
     """calculate the right reach
-    For all model realisations, given a data evaluation point index, get the
+    For all model realisations, given a data evaluation point index and a degree of tolerance, get the
     right reach for all realisations and derive the maximum
 
     Parameters
@@ -87,7 +87,7 @@ def right_reach(perf_meas, i, pct_beh):
         the index of the array defining the current model evaluation point to
         calculate the left reach
     pct_beh : float [0-1]
-        tolerance level, defining the percentage of points that do not comply
+        degree of tolerance, defining the percentage of points that do not comply
         in order to continue the reach calculation
 
     Returns
@@ -151,14 +151,14 @@ def breach_run(perf_meas, pcten): #, vwe
         Input array of shape NxM with N the number of model realisations and M
         the number of model evaluation points (time steps, measured values)
     pcten: list
-        list of tolerance levels, defining the percentage of points
+        list of degrees of tolerance tolerance, defining the percentage of points
         that are allowed to fail
     vwe: Not yet implemented!
 
     Returns
     -------
     breach : numpy ndarray
-        For each of the tolerance levels, the left and right reach for each
+        For each of the degrees of tolerance, the left and right reach for each
         of the data points
     """
 
