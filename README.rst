@@ -61,7 +61,7 @@ The script pybreach.py_ calculates the maximum left and right reach for a given 
 
 .. _pybreach.py: https://github.com/stijnvanhoey/pybreach/blob/v0.3.0/pybreach/pybreach.py
 
-The script breachplot.py_ returns a BReach plot for a given BReach result.
+The script breachplot.py returns a BReach plot for a given BReach result.
 
 .. _breachplot.py: https://github.com/stijnvanhoey/pybreach/blob/v0.3.0/pybreach/breachplot.py
 
