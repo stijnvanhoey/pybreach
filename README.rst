@@ -12,10 +12,6 @@ Bidirectional Reach (BReach)
 .. image:: https://readthedocs.org/projects/pybreach/badge/?version=latest
         :target: https://pybreach.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
-
-.. image:: https://pyup.io/repos/github/stijnvanhoey/pybreach/shield.svg
-     :target: https://pyup.io/repos/github/stijnvanhoey/pybreach/
-     :alt: Updates
      
 .. image:: https://zenodo.org/badge/88784240.svg
    :target: https://zenodo.org/badge/latestdoi/88784240
